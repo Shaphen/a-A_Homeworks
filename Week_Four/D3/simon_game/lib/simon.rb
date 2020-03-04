@@ -31,15 +31,17 @@ class Simon
   end
 
   def show_sequence
-    add_random_color
+    p add_random_color
   end
 
   def require_sequence
-
+    user_attempt = gets.chomp
+    user_seq = user_attempt.split(" ")
+    @game_over = true if user_seq != @seq
   end
 
   def round_success_message
-
+    puts "Correct!"
   end
 
   def game_over_message
@@ -52,3 +54,6 @@ class Simon
     @seq = []
   end
 end
+
+play_simon = Simon.new
+play_simon.play
