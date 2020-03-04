@@ -10,7 +10,11 @@ class Simon
   end
   
   def play
-    
+    take_turn until game_over
+    if game_over
+      game_over_message
+      reset_game
+    end
   end
   
   def add_random_color
@@ -27,7 +31,7 @@ class Simon
   end
 
   def show_sequence
-
+    add_random_color
   end
 
   def require_sequence
@@ -39,10 +43,12 @@ class Simon
   end
 
   def game_over_message
-
+    puts "Oh no! You suck!"
   end
 
   def reset_game
-
+    @sequence_length = 1
+    @game_over = false
+    @seq = []
   end
 end
