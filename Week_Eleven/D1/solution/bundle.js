@@ -90,14 +90,32 @@
 /*!**********************************!*\
   !*** ./actions/giphy_actions.js ***!
   \**********************************/
-/*! no exports provided */
+/*! exports provided: RECEIVE_SEARCH_GIPHYS, REQUEST_SEARCH_GIPHYS, fetchSearchGiphys, receiveSearchGiphys */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SEARCH_GIPHYS", function() { return RECEIVE_SEARCH_GIPHYS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REQUEST_SEARCH_GIPHYS", function() { return REQUEST_SEARCH_GIPHYS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSearchGiphys", function() { return fetchSearchGiphys; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSearchGiphys", function() { return receiveSearchGiphys; });
 /* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/api_util */ "./util/api_util.js");
-/* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_util_api_util__WEBPACK_IMPORTED_MODULE_0__);
 
+var RECEIVE_SEARCH_GIPHYS = 'RECEIVE_SEARCH_GIPHYS';
+var REQUEST_SEARCH_GIPHYS = 'REQUEST_SEARCH_GIPHYS';
+var fetchSearchGiphys = function fetchSearchGiphys(searchTerm) {
+  return function (dispatch) {
+    return _util_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSearchGiphys"](searchTerm).then(function (giphys) {
+      return dispatch(receiveSearchGiphys(giphys.data));
+    });
+  };
+};
+var receiveSearchGiphys = function receiveSearchGiphys(giphys) {
+  return {
+    type: RECEIVE_SEARCH_GIPHYS,
+    giphys: giphys
+  };
+};
 
 /***/ }),
 
@@ -105,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************!*\
   !*** ./components/giphys_index.jsx ***!
   \*************************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -113,9 +131,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _giphys_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./giphys_index_item */ "./components/giphys_index_item.jsx");
-/* harmony import */ var _giphys_index_item__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_giphys_index_item__WEBPACK_IMPORTED_MODULE_1__);
 
 
+
+function GiphysIndex(_ref) {
+  var giphys = _ref.giphys;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, giphys.map(function (giphy) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_giphys_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: giphy.id,
+      giphy: giphy
+    });
+  }));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (GiphysIndex);
 
 /***/ }),
 
@@ -123,10 +152,25 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************!*\
   !*** ./components/giphys_index_item.jsx ***!
   \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
+function GiphysIndexItem(_ref) {
+  var giphy = _ref.giphy;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "giphy-li"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: giphy.images.fixed_height.url
+  }));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (GiphysIndexItem);
 
 /***/ }),
 
@@ -134,7 +178,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************!*\
   !*** ./components/giphys_search.jsx ***!
   \**************************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -142,8 +186,87 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _giphys_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./giphys_index */ "./components/giphys_index.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
+
+
+var GiphysSearch =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(GiphysSearch, _React$Component);
+
+  function GiphysSearch() {
+    var _this;
+
+    _classCallCheck(this, GiphysSearch);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(GiphysSearch).call(this));
+    _this.state = {
+      searchTerm: 'golden retriever'
+    };
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(GiphysSearch, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchSearchGiphys('golden+retriever');
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.setState({
+        searchTerm: e.currentTarget.value
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var searchTerm = this.state.searchTerm.split(' ').join('+');
+      this.props.fetchSearchGiphys(searchTerm);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var giphys = this.props.giphys;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "search-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        value: this.state.searchTerm,
+        onChange: this.handleChange
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        onClick: this.handleSubmit
+      }, "Search Giphy")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_giphys_index__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        giphys: giphys
+      }));
+    }
+  }]);
+
+  return GiphysSearch;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (GiphysSearch);
 
 /***/ }),
 
@@ -151,7 +274,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************!*\
   !*** ./components/giphys_search_container.jsx ***!
   \************************************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -163,13 +286,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    giphys: state.giphys
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    fetchSearchGiphys: function fetchSearchGiphys(searchTerm) {
+      return dispatch(Object(_actions_giphy_actions__WEBPACK_IMPORTED_MODULE_2__["fetchSearchGiphys"])(searchTerm));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_giphys_search__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
 /***/ }),
 
 /***/ "./components/root.jsx":
 /*!*****************************!*\
   !*** ./components/root.jsx ***!
   \*****************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -181,6 +320,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+var Root = function Root(_ref) {
+  var store = _ref.store;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__["Provider"], {
+    store: store
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_giphys_search_container__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Root);
 
 /***/ }),
 
@@ -203,6 +351,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  var root = document.getElementById('root');
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    store: store
+  }), root);
+});
 
 /***/ }),
 
@@ -2633,7 +2788,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
           );
           err.name = 'Invariant Violation';
           throw err;
-        } else if ( true && typeof console !== 'undefined') {
+        } else if ("development" !== 'production' && typeof console !== 'undefined') {
           // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
           if (
@@ -23720,7 +23875,7 @@ __webpack_require__.r(__webpack_exports__);
 */
 function isCrushed() {}
 
-if ( true && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
+if ("development" !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
   Object(_utils_warning__WEBPACK_IMPORTED_MODULE_5__["default"])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
 }
 
@@ -23841,7 +23996,7 @@ g = (function() {
 
 try {
 	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
+	g = g || Function("return this")() || (1, eval)("this");
 } catch (e) {
 	// This works if the window reference is available
 	if (typeof window === "object") g = window;
@@ -23895,7 +24050,7 @@ module.exports = function(originalModule) {
 /*!************************************!*\
   !*** ./reducers/giphys_reducer.js ***!
   \************************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23903,13 +24058,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/giphy_actions */ "./actions/giphy_actions.js");
 
 
+var giphysReducer = function giphysReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions_giphy_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SEARCH_GIPHYS"]:
+      return action.giphys;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (giphysReducer);
+
 /***/ }),
 
 /***/ "./reducers/root_reducer.js":
 /*!**********************************!*\
   !*** ./reducers/root_reducer.js ***!
   \**********************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23918,6 +24088,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _giphys_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./giphys_reducer */ "./reducers/giphys_reducer.js");
 
 
+/* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  giphys: _giphys_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+}));
 
 /***/ }),
 
@@ -23925,7 +24098,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************!*\
   !*** ./store/store.js ***!
   \************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -23937,16 +24110,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var configureStore = function configureStore() {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_1__["default"]));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
 /***/ }),
 
 /***/ "./util/api_util.js":
 /*!**************************!*\
   !*** ./util/api_util.js ***!
   \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: fetchSearchGiphys */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/util/api_util.js: Identifier directly after number (5:73)\n\n\u001b[0m \u001b[90m 3 | \u001b[39m  \u001b[36mreturn\u001b[39m $\u001b[33m.\u001b[39majax({\u001b[0m\n\u001b[0m \u001b[90m 4 | \u001b[39m    method\u001b[33m:\u001b[39m \u001b[32m'GET'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 | \u001b[39m    url\u001b[33m:\u001b[39m \u001b[32m`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${6B8ZDk7vbiC15UoS7itXg68hBsM0Q7yv}&limit=2`\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m                                                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 6 | \u001b[39m  })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 7 | \u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 8 | \u001b[39m\u001b[0m\n    at _class.raise (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:3939:15)\n    at _class.readNumber (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4807:12)\n    at _class.getTokenFromCode (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4571:14)\n    at _class.readToken (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4149:12)\n    at _class.readToken (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:3667:46)\n    at _class.nextToken (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4141:12)\n    at _class.next (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4077:10)\n    at _class.eat (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4082:12)\n    at _class.expect (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5236:10)\n    at _class.parseTemplate (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6621:12)\n    at _class.parseExprAtom (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6311:21)\n    at _class.parseExprAtom (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:3635:52)\n    at _class.parseExprSubscripts (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5924:21)\n    at _class.parseMaybeUnary (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5903:21)\n    at _class.parseExprOps (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5812:21)\n    at _class.parseMaybeConditional (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5784:21)\n    at _class.parseMaybeAssign (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5731:21)\n    at _class.parseObjectProperty (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6798:101)\n    at _class.parseObjPropValue (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6823:99)\n    at _class.parseObj (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6734:12)\n    at _class.parseExprAtom (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6294:21)\n    at _class.parseExprAtom (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:3635:52)\n    at _class.parseExprSubscripts (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5924:21)\n    at _class.parseMaybeUnary (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5903:21)\n    at _class.parseExprOps (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5812:21)\n    at _class.parseMaybeConditional (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5784:21)\n    at _class.parseMaybeAssign (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5731:21)\n    at _class.parseExprListItem (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:7003:18)\n    at _class.parseCallExpressionArguments (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6124:22)\n    at _class.parseSubscript (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6029:32)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSearchGiphys", function() { return fetchSearchGiphys; });
+var fetchSearchGiphys = function fetchSearchGiphys(searchTerm) {
+  return $.ajax({
+    method: 'GET',
+    url: "http://api.giphy.com/v1/gifs/search?q=".concat(searchTerm, "&api_key=dc6zaTOxFJmzC&limit=2")
+  });
+};
 
 /***/ })
 
