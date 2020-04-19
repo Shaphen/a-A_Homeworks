@@ -11,7 +11,7 @@ import { receiveSearchGiphys } from './actions/giphy_actions';
 document.addEventListener('DOMContentLoaded', () => {
   const store = configureStore();
   const root = document.getElementById('root');
-  ReactDOM.render(<h1>This is the Giphys Page!</h1>, root)
+  ReactDOM.render(<Root store={store} />, root)
 
   //test code below delete later
   window.fetchSearchGiphys = fetchSearchGiphys;
