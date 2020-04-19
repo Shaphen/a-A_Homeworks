@@ -96,7 +96,6 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/api_util */ "./util/api_util.js");
-/* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_util_api_util__WEBPACK_IMPORTED_MODULE_0__);
 
 
 /***/ }),
@@ -193,16 +192,27 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./store/store.js");
-/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./components/root.jsx");
+/* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util/api_util */ "./util/api_util.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store/store */ "./store/store.js");
+/* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/root */ "./components/root.jsx");
+// test code import delete below when done
+ // end test code imports delete above when done
 
 
 
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  //test code to delete later below
+  window.fetchSearchGiphys = _util_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSearchGiphys"]; //end test code remember to delete above
+
+  var root = document.getElementById('root');
+  react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h1", null, "This is the Giphys Page!"), root);
+});
 
 /***/ }),
 
@@ -23943,10 +23953,18 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************!*\
   !*** ./util/api_util.js ***!
   \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: fetchSearchGiphys */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/util/api_util.js: Identifier directly after number (5:73)\n\n\u001b[0m \u001b[90m 3 | \u001b[39m  \u001b[36mreturn\u001b[39m $\u001b[33m.\u001b[39majax({\u001b[0m\n\u001b[0m \u001b[90m 4 | \u001b[39m    method\u001b[33m:\u001b[39m \u001b[32m'GET'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 | \u001b[39m    url\u001b[33m:\u001b[39m \u001b[32m`http://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${6B8ZDk7vbiC15UoS7itXg68hBsM0Q7yv}&limit=2`\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m                                                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 6 | \u001b[39m    \u001b[0m\n\u001b[0m \u001b[90m 7 | \u001b[39m  })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 8 | \u001b[39m}\u001b[0m\n    at _class.raise (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:3939:15)\n    at _class.readNumber (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4807:12)\n    at _class.getTokenFromCode (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4571:14)\n    at _class.readToken (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4149:12)\n    at _class.readToken (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:3667:46)\n    at _class.nextToken (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4141:12)\n    at _class.next (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4077:10)\n    at _class.eat (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:4082:12)\n    at _class.expect (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5236:10)\n    at _class.parseTemplate (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6621:12)\n    at _class.parseExprAtom (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6311:21)\n    at _class.parseExprAtom (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:3635:52)\n    at _class.parseExprSubscripts (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5924:21)\n    at _class.parseMaybeUnary (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5903:21)\n    at _class.parseExprOps (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5812:21)\n    at _class.parseMaybeConditional (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5784:21)\n    at _class.parseMaybeAssign (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5731:21)\n    at _class.parseObjectProperty (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6798:101)\n    at _class.parseObjPropValue (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6823:99)\n    at _class.parseObj (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6734:12)\n    at _class.parseExprAtom (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6294:21)\n    at _class.parseExprAtom (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:3635:52)\n    at _class.parseExprSubscripts (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5924:21)\n    at _class.parseMaybeUnary (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5903:21)\n    at _class.parseExprOps (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5812:21)\n    at _class.parseMaybeConditional (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5784:21)\n    at _class.parseMaybeAssign (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:5731:21)\n    at _class.parseExprListItem (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:7003:18)\n    at _class.parseCallExpressionArguments (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6124:22)\n    at _class.parseSubscript (/Users/shaphenpangburn/Desktop/Personal_Files/AppAcademy/aA_homeowork/Week_Eleven/D1/giphy/node_modules/@babel/parser/lib/index.js:6029:32)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSearchGiphys", function() { return fetchSearchGiphys; });
+var fetchSearchGiphys = function fetchSearchGiphys(searchTerm) {
+  return $.ajax({
+    method: 'GET',
+    url: "http://api.giphy.com/v1/gifs/search?q=".concat(searchTerm, "&api_key=6B8ZDk7vbiC15UoS7itXg68hBsM0Q7yv&limit=2")
+  });
+};
 
 /***/ })
 
