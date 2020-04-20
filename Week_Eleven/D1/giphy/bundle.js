@@ -136,7 +136,9 @@ __webpack_require__.r(__webpack_exports__);
 
 function GiphysIndex(_ref) {
   var giphys = _ref.giphys;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, giphys.map(function (giphy) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "list"
+  }, giphys.map(function (giphy) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_giphys_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: giphy.id,
       giphy: giphy
@@ -163,7 +165,9 @@ __webpack_require__.r(__webpack_exports__);
 
 function GiphysIndexItem(_ref) {
   var giphy = _ref.giphy;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "items"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: giphy.images.fixed_height.url
   }));
 }
@@ -243,7 +247,8 @@ function (_React$Component) {
     value: function render() {
       var giphys = this.props.giphys;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Giphys Search Page!"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        method: "get"
+        method: "get",
+        className: "form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         onChange: this.handleChange,
@@ -24135,7 +24140,7 @@ __webpack_require__.r(__webpack_exports__);
 var fetchSearchGiphys = function fetchSearchGiphys(searchTerm) {
   return $.ajax({
     method: 'GET',
-    url: "http://api.giphy.com/v1/gifs/search?q=".concat(searchTerm, "&api_key=6B8ZDk7vbiC15UoS7itXg68hBsM0Q7yv&limit=2")
+    url: "http://api.giphy.com/v1/gifs/search?q=".concat(searchTerm, "&api_key=6B8ZDk7vbiC15UoS7itXg68hBsM0Q7yv&limit=4")
   });
 };
 

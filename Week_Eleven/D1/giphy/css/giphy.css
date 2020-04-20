@@ -1,5 +1,7 @@
 body {
   margin: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 ul {
@@ -12,8 +14,15 @@ ul {
   padding-right: 10px;
 }
 
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
 img {
+
   border-radius: 5px;
+  margin: 10px;
 }
 
 .search-bar {
@@ -32,6 +41,27 @@ input {
 
 button {
   padding: 6px;
-  border: none;
+  border: 1px solid grey;
+  border-radius: 5px;
   font-size: 10px;
+}
+
+button:hover {
+  background-color: lightgray;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul li {
+  width: 50%;
+  display: flex;
+  justify-content: center;
 }

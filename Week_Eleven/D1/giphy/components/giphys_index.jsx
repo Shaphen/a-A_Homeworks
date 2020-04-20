@@ -3,7 +3,7 @@ import GiphysIndexItem from './giphys_index_item';
 
 function GiphysIndex({ giphys }) {
   return (
-    <ul>
+    <ul className="list">
       { giphys.map(giphy => <GiphysIndexItem key={giphy.id} giphy={giphy} />) }
     </ul>
   );

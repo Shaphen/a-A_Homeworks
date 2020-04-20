@@ -28,7 +28,7 @@ class GiphysSearch extends React.Component {
     return (
       <div>
         <h1>Giphys Search Page!</h1>
-        <form method="get">
+        <form method="get" className="form">
           <input type="text" onChange={ this.handleChange } value={ this.state.searchTerm } />
           <button type="submit" onClick={ this.handleSubmit }>Search Giphy!</button>
         </form>
